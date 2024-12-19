@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    var isAdmin = User.IsInRole("Admin");
+}
+
+<h2 class="mt-4">Dashboard</h2>
+
+<div class="container mt-4">
+    <div class="row g-3">
+        <!-- Manage Products -->
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-block" onclick="location.href='@Url.Action("Index", "Products")'">
+                Manage Products
+            </button>
+        </div>
+
+        <!-- Manage Suppliers -->
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-block" onclick="location.href='@Url.Action("Index", "Suppliers")'">
+                Manage Suppliers
+            </button>
+        </div>
+
+        <!-- Manage Inventory -->
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-block" onclick="location.href='@Url.Action("Index", "Inventory")'">
+                Manage Inventory
+            </button>
+        </div>
+
+        <!-- Manage Users (Visible only for Admins) -->
+        @if (isAdmin)
+        {
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block" onclick="location.href='@Url.Action("Index", "Users")'">
+                    Manage Users
+                </button>
+            </div>
+        }
+    </div>
+</div>

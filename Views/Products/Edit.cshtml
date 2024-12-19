@@ -1,0 +1,44 @@
+﻿@model SkaftoBageriA.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <div class="form-group">
+        <label asp-for="ProductName" class="control-label">Product Name</label>
+        <input asp-for="ProductName" class="form-control" />
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductPrice" class="control-label">Product Price</label>
+        <input asp-for="ProductPrice" class="form-control" />
+        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductStock" class="control-label">Stock Quantity</label>
+        <input asp-for="ProductStock" class="form-control" />
+        <span asp-validation-for="ProductStock" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReorderPoint" class="control-label">Reorder Point</label>
+        <input asp-for="ReorderPoint" class="form-control" />
+        <span asp-validation-for="ReorderPoint" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SupplierId" class="control-label">Supplier</label>
+        <select asp-for="SupplierId" asp-items="@(ViewData["Suppliers"] as SelectList)" class="form-control">
+            <option value="">Select Supplier</option>
+        </select>
+        <span asp-validation-for="SupplierId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
