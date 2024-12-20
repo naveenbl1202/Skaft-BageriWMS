@@ -1,0 +1,48 @@
+﻿@model SkaftoBageriA.Models.Inventory
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+}
+
+<h2>Edit Inventory</h2>
+
+<form asp-action="Edit" method="post" asp-antiforgery="true">
+    <input type="hidden" asp-for="InventoryId" />
+
+    <div class="form-group">
+        <label asp-for="BatchNumber" class="control-label">Batch Number</label>
+        <input asp-for="BatchNumber" class="form-control" />
+        <span asp-validation-for="BatchNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="QuantityInStock" class="control-label">Quantity in Stock</label>
+        <input asp-for="QuantityInStock" type="number" class="form-control" />
+        <span asp-validation-for="QuantityInStock" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReorderPoint" class="control-label">Reorder Point</label>
+        <input asp-for="ReorderPoint" type="number" class="form-control" />
+        <span asp-validation-for="ReorderPoint" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductId" class="control-label">Product</label>
+        <select asp-for="ProductId" asp-items="@(ViewData["Products"] as SelectList)" class="form-control">
+            <option value="">-- Select Product --</option>
+        </select>
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SupplierId" class="control-label">Supplier</label>
+        <select asp-for="SupplierId" asp-items="@(ViewData["Suppliers"] as SelectList)" class="form-control">
+            <option value="">-- Select Supplier --</option>
+        </select>
+        <span asp-validation-for="SupplierId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
